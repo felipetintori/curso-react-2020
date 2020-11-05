@@ -154,4 +154,4 @@ class CadastroProduto extends React.Component {
     }
 }
 
-export default withRouter(CadastroProduto)
+export default withRouter(CadastroProduto) 

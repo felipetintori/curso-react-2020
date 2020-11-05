@@ -8,13 +8,13 @@ import ConsultaProdutos from './views/produtos/consulta'
 
 export default () => {
     return (
-    
-        <Switch>
-            <Route exact path="/cadastro-produtos/:sku?" component={CadastroProduto}/>
-            <Route exact path="/consulta-produtos" component={ConsultaProdutos}/>
-            <Route exact path="/" component={Home}/>
-        </Switch>
 
-        
+        <Switch>
+            <Route exact path="/cadastro-produtos/:sku?" component={CadastroProduto} />
+            <Route exact path="/consulta-produtos" component={ConsultaProdutos} />
+            <Route exact path="/" component={Home} />
+        </Switch> 
+
+
     )
 }

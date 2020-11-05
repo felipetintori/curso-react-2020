@@ -21,6 +21,7 @@ class ConsultaProdutos extends React.Component{
         console.log(sku)
         this.props.history.push(`/cadastro-produtos/${sku}`)
     }
+    
     render(){
         return(
             <div className="card">
