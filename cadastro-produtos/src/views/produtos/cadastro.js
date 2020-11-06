@@ -10,7 +10,8 @@ const estadoInicial = {
     preco: 0,
     fornecedor: '',
     sucesso: false,
-    errors: []
+    errors: [],
+    atualizando: false
 }
 
 class CadastroProduto extends React.Component {
@@ -62,9 +63,9 @@ class CadastroProduto extends React.Component {
 
         if(sku){
            const resultado = this.service.obterProdutos().filter(produto => produto.sku === sku)
-            if(resultado.length ===1){
+            if(resultado.length === 1){
                 const produtoEncontrado = resultado[0]
-                this.setState({...produtoEncontrado})
+                this.setState({...produtoEncontrado, atualizando: true})
 
             }
         }
@@ -73,7 +74,8 @@ class CadastroProduto extends React.Component {
         return (
             <div className="card">
                 <div className="card-header">
-                    Cadastro de Produto
+                    {this.state.atualizando ? 'Atualização ' : 'Cadastro '}
+                    de Produto
                 </div>
                 <div className="card-body">
                     {
@@ -113,7 +115,7 @@ class CadastroProduto extends React.Component {
                         <div className="col-md-6">
                             <div className="form-group">
                                 <label>SKU : *</label>
-                                <input type="text" onChange={this.onChange} name="sku" value={this.state.sku} className="form-control" />
+                                <input type="text" onChange={this.onChange} name="sku" value={this.state.sku} className="form-control" disabled={this.state.atualizando} />
                             </div>
                         </div>
                     </div>
@@ -141,7 +143,9 @@ class CadastroProduto extends React.Component {
                     </div>
                     <div className="row">
                         <div className="col-md-1">
-                            <button onClick={this.onSubmit} className="btn btn-success">Salvar</button>
+                            <button onClick={this.onSubmit} className="btn btn-success">
+                                {this.state.atualizando ? 'Atualizar' : 'Salvar'}
+                            </button>
                         </div>
                         <div className="col-md-1">
                             <button className="btn btn-primary" onClick={this.limpaCampos}>Limpar</button>
