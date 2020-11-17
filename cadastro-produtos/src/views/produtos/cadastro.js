@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from '../../components/card'
 
 import ProdutoService from '../../app/produtoService'
 import {withRouter} from 'react-router-dom'
@@ -73,13 +74,9 @@ class CadastroProduto extends React.Component {
     }
     render() {
         return (
-            <div className="card">
-                <div className="card-header">
-                    {this.state.atualizando ? 'Atualização ' : 'Cadastro '}
-                    de Produto
-                </div>
-                <div className="card-body">
-                    <form id="frmProduto" onSubmit={this.onSubmit}>
+            <Card header={this.state.atualizando ? 'Atualização de Produto' : 'Cadastro de Produto'}>
+                
+                <form id="frmProduto" onSubmit={this.onSubmit}>
                         {
                             this.state.sucesso ?
                                 (
@@ -154,9 +151,7 @@ class CadastroProduto extends React.Component {
                             </div>
                         </div>
                     </form>
-                </div>
-
-            </div>
+                </Card>
         )
     }
 }
