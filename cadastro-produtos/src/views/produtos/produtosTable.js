@@ -5,7 +5,7 @@ export default (props) => (
     <thead>
         <tr>
             <th>Nome</th>
-            <th>SKU</th>
+            <th>SKU</th> 
             <th>Preço</th>
             <th>Fornecedor</th>
             <th></th>
