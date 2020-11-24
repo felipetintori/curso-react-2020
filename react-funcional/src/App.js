@@ -1,32 +1,28 @@
-import React, {useState} from 'react';
+import React, {Component, useState} from 'react';
+import {View, Text, StyleSheet} from 'react-native'
 
 
-function App() {
+class App extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
 
-  const [numero, setNumero] = useState(0)
-  const [ segundoNumero, setSegundoNumero] = useState(10)
-  const [resultado, setResultado] = useState(15)
-
-  const somar = () => {
-    const numeroInt = parseInt(numero)
-    const segundoNumeroInt = parseInt(segundoNumero)
-
-    setResultado(numeroInt + segundoNumeroInt)
+    }
   }
 
-  
-  return (
-    <div >
-      numero 1 <br/>
-      <input type="text" value={numero} onChange={e => setNumero(e.target.value)} /><br/>
-      numero 2 <br/>
-      <input type="text" value={segundoNumero} onChange={e => setSegundoNumero(e.target.value)} /><br/>
-      <button onClick={somar}>Somar</button> <br/>
-      resultado <br/>
-      <input type="text" value={resultado} /><br/>
-      
-    </div>
-  );
+  render(){
+    return(
+      <View style={StyleSheet.container}>
+
+      </View>
+    )
+  }
 }
+
+const styles = StyleSheet.create({
+  container:{
+    marginTop:15
+  }
+})
 
 export default App;
