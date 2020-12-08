@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
-import { Button, TextField, Grid } from '@material-ui/core';
+import { Button, TextField, Grid, Select, MenuItem, FormControl, InputLabel } from '@material-ui/core';
 
 
 const useStyles = makeStyles(theme => ({
@@ -53,13 +53,16 @@ const UsersToolbar = props => {
           </Grid>
 
           <Grid item md={4}>
-          
-            <TextField
-              className={classes.searchInput}
-              placeholder=""
-              label="Categoria:"
-              fullWidth
-            />
+            <FormControl fullWidth>
+              <InputLabel>Categoria:</InputLabel>
+              <Select>
+                <MenuItem value="">Selecione...</MenuItem>
+                <MenuItem value={"TRABALHO"}>trabalho</MenuItem>
+                <MenuItem value={"ESTUDOS"}>Estudos</MenuItem>
+                <MenuItem value={"OUTROS"}>Outros</MenuItem>
+              </Select>
+            </FormControl>
+           
           </Grid>
           <Grid item md={2}>
             <Button variant="contained" color="secondary">Adicionar</Button>
