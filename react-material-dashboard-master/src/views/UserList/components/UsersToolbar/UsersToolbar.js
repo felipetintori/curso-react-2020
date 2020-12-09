@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
@@ -30,6 +30,14 @@ const useStyles = makeStyles(theme => ({
 const UsersToolbar = props => {
   const { className, ...rest } = props;
 
+  const [descricao, setDescricao] = useState("");
+  const [categoria, setCategoria] = useState("")
+
+  const submit = (event) => {
+    event.preventDefault();
+    console.log(`Valores: descricao - ${descricao}, categoria: ${categoria}`)
+  }
+
   const classes = useStyles();
 
   return (
@@ -49,13 +57,15 @@ const UsersToolbar = props => {
               placeholder="Descrição da Tarefa"
               label="Descrição"
               fullWidth
+              value={descricao}
+              onChange={e => setDescricao(e.target.value)}
             />
           </Grid>
 
           <Grid item md={4}>
             <FormControl fullWidth>
               <InputLabel>Categoria:</InputLabel>
-              <Select>
+              <Select value={categoria} onChange={e => setCategoria(e.target.value)}>
                 <MenuItem value="">Selecione...</MenuItem>
                 <MenuItem value={"TRABALHO"}>trabalho</MenuItem>
                 <MenuItem value={"ESTUDOS"}>Estudos</MenuItem>
@@ -65,7 +75,7 @@ const UsersToolbar = props => {
            
           </Grid>
           <Grid item md={2}>
-            <Button variant="contained" color="secondary">Adicionar</Button>
+            <Button onClick={submit} variant="contained" color="secondary">Adicionar</Button>
           </Grid>
         </Grid>
         
