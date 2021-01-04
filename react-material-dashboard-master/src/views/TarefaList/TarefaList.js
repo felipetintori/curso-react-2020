@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/styles';
 
 import { TarefasToolbar, TarefasTable } from './components';
@@ -14,20 +14,41 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const API_URL = "https://minhastarefas-api.herokuapp.com/tarefas"
+const headers = {'x-tenant-id' : 'fulano@email.com'}
+
 const TarefaList = () => {
   const classes = useStyles();
 
-  const [tarefas] = useState([]);
+  const [tarefas, setTarefas] = useState([]);
 
   const salvar = (tarefa) => {
-    axios.post('https://minhastarefas-api.herokuapp.com/tarefas', tarefa, {
-      headers: {'x-tenant-id' : 'fulano@email.com'}
-    }).then(response => {console.log(response.data)}).catch( erro => {
+    axios.post(API_URL, tarefa, {
+      headers: headers
+    }).then(response => {listarTarefas();}).catch( erro => {
       console.log(erro)
     }
 
     )
   }
+
+  const listarTarefas = () => {
+    axios.get(API_URL, {
+      headers: headers
+    }).then(response =>{
+      const listaDeTarefas = response.data
+      console.log(listaDeTarefas)
+      setTarefas(listaDeTarefas)
+    }).catch(erro => {
+      console.log(erro)
+    })
+  }
+
+  useEffect(() => {
+    listarTarefas();
+  }, [])
+
+  
 
   return (
     <div className={classes.root}>
