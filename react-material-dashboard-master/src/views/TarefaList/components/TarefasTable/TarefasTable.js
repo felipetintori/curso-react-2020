@@ -69,7 +69,18 @@ const TarefasTable = props => {
                 </TableRow>
               </TableHead> 
               <TableBody>
+                {tarefas.map(tarefa => {
+                  return(
+                    <TableRow Key={tarefa.id}>
+                      <TableCell>{tarefa.id}</TableCell>
+                      <TableCell>{tarefa.descricao}</TableCell>
+                      <TableCell>{tarefa.categoria}</TableCell>
+                      <TableCell>{tarefa.done ? 'Feito' : 'Pendente' }</TableCell>
+                    </TableRow>
+                  )
+                }) 
 
+                }
               </TableBody>
             </Table>
           </div>
