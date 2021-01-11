@@ -25,7 +25,10 @@ const TarefaList = () => {
   const salvar = (tarefa) => {
     axios.post(API_URL, tarefa, {
       headers: headers
-    }).then(response => {listarTarefas();}).catch( erro => {
+    }).then(response => {
+      const novaTarefa = response.data
+      setTarefas([...tarefas, novaTarefa])
+    }).catch( erro => {
       console.log(erro)
     }
 
